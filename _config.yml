@@ -1,0 +1,6 @@
+title: My Website
+description: A website built with Markdown and GitHub Pages
+theme: jekyll-theme-cayman
+
+[Home](index.md)
+[About](about.md)
