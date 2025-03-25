@@ -1,3 +1,3 @@
 # About
 
-made by me
+you can contact me at: info@batagan.de
