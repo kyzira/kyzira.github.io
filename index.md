@@ -4,4 +4,4 @@
 [**About**](about.md)
 
 
-contact me at info@batagan.de
+[Genki Lehrbuch](https://bwsyncandshare.kit.edu/s/Dnyi9HETZRbfBML)
