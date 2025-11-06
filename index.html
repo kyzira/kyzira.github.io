@@ -1,169 +1,148 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Friseursalon Team Hava - Ihr Salon in Tuttlingen</title>
-  <meta name="description" content="Salon Glanz ist Ihr moderner Friseursalon für Damen, Herren und Kinder. Schnitte, Farbe, Styling und Pflege in hochwertiger Atmosphäre.">
-  <link rel="icon" href="/favicon.ico">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Friseursalon Team Hava – Tuttlingen</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
-  <style>
-    :root {
-      --bg: #0f1216;
-      --panel: #151a21;
-      --muted: #8a94a6;
-      --text: #e7ecf3;
-      --brand: #c99c5d;
-      --brand-2: #e0b16d;
-      --maxw: 1200px;
+  // Fade-in on scroll
+  const io = new IntersectionObserver((entries)=>{
+    for (const e of entries) {
+      if (e.isIntersecting) e.target.classList.add('reveal');
     }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, sans-serif; color: var(--text); background: var(--bg); }
-    img { max-width: 100%; height: auto; display: block; border-radius: 10px; }
-    a { color: var(--brand); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header { position: sticky; top: 0; background: rgba(15,18,22,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid #1f2733; z-index: 50; }
-    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
-
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: var(--text); }
-
-    .menu { display: flex; gap: 18px; }
-    .menu a { color: var(--text); }
-
-    .menu-toggle { display: none; background: none; border: 1px solid #2a3342; color: var(--text); padding: 8px 12px; border-radius: 8px; }
-
-    @media (max-width: 768px) {
-      .menu { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #10151c; padding: 12px; }
-      .menu.open { display: flex; }
-      .menu-toggle { display: block; }
-    }
-
-    .hero { padding: 40px 0; text-align: center; }
-    .hero h2 { font-size: 32px; margin-bottom: 12px; }
-    .hero p { color: var(--muted); font-size: 16px; }
-
-    section { padding: 48px 0; }
-    .section-title { font-size: 28px; text-align: center; margin-bottom: 16px; }
-    .section-desc { color: var(--muted); text-align: center; margin-bottom: 24px; }
-
-    .grid { display: grid; gap: 16px; }
-    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
-
-    @media (max-width: 900px) {
-      .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
-    }
-
-    .card { background: var(--panel); border: 1px solid #253044; border-radius: 14px; padding: 16px; text-align: center; }
-    .card h3 { margin: 12px 0 8px; font-size: 18px; }
-
-    .team-card img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto; }
-    .map { width: 100%; aspect-ratio: 16/9; background: #10151c; border-radius: 10px; }
-
-    footer { text-align: center; padding: 24px 0; border-top: 1px solid #1b2431; color: #9aa6b2; }
-  </style>
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.revealable').forEach(el => io.observe(el));
+});
+</script>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#">Friseursalon Team Hava</a>
-      <button class="menu-toggle" aria-expanded="false">Menü</button>
-      <nav class="menu" id="menu">
-        <a href="#leistungen">Unsere Leistungen</a>
-        <a href="#team">Unser Team</a>
+  <header class="topbar">
+    <div class="container">
+      <nav class="menu">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#preise">Preise</a>
+        <a href="#team">Team</a>
+        <a href="#kontakt">Öffnungszeiten</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Friseursalon Team Hava Logo">
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h2>Friseursalon Team Hava - Ihr Salon in Tuttlingen</h2>
-        <p>Haarschnitte, Farbe und Styling in angenehmer Atmosphäre.</p>
-        <img src="images/salon.jpg" alt="Salon Innenraum" loading="lazy">
-      </div>
-    </section>
+  <section id="home" class="hero" style="background-image: url('assets/hero.jpg');">
+    <div class="shade"></div>
+    <div class="hero-text">
+      <h1>Ihr Salon in Tuttlingen</h1>
+      <p>Haarschnitte, Farbe und Styling in angenehmer Atmosphäre</p>
+    </div>
+  </section>
 
-    <section id="leistungen">
-      <div class="container">
-        <h2 class="section-title">Unsere Leistungen</h2>
-        <p class="section-desc">Haarschnitt, Farbe, Styling, Pflege, Beratung, Hochzeiten</p>
-        <div class="grid cols-3">
-          <div class="card"><img src="images/leistungen-schnitt.png" alt="Schnitt"><h3>Schnitt</h3><p>Präzise Schnitte für Damen und Herren.</p></div>
-          <div class="card"><img src="images/leistungen-farbe.png" alt="Farbe"><h3>Farbe</h3><p>Balayage, Strähnen, Ansatz und Farbkorrektur.</p></div>
-          <div class="card"><img src="images/leistungen-styling.png" alt="Styling"><h3>Styling</h3><p>Föhnen, Wellen und Hochsteckfrisuren.</p></div>
+  <section id="leistungen" class="section revealable">
+    <div class="container">
+      <h2>Unsere Leistungen</h2>
+      <div class="divider"></div>
+      <div class="grid two">
+        <div class="copy">
+          <h3><img class="icon" src="assets/ico_schere.png" alt=""> Haarschnitte</h3>
+          <p>Präzise Haarschnitte für Damen und Herren. Ob Kurzhaarschnitt oder schöne Stufen - wir arbeiten mit höchster Sorgfalt und Präzision.</p>
+          <h3><img class="icon" src="assets/ico_pinsel.png" alt=""> Farbe</h3>
+          <p>Balayage, Strähnen, Ansatz oder Farbkorrektur - wir setzen Ihre Wünsche hochwertig um.</p>
+          <h3><img class="icon" src="assets/ico_kamm.png" alt=""> Styling</h3>
+          <p>Föhnen, Wellen oder Hochsteckfrisuren für besondere Anlässe - wir nehmen uns Zeit für Sie.</p>
         </div>
-      </div>
-    </section>
-  
-    <section id="team">
-      <div class="container">
-        <h2 class="section-title">Unser Team</h2>
-        <div class="grid cols-3">
-          <div class="card team-card"><img src="images/team-hava.jpg" alt="Hava Batagan"><h3>Hava Batagan</h3><p>Friseurmeisterin, Salonleitung</p></div>
-          <div class="card team-card"><img src="images/team-lea.jpg" alt="Test"><h3>Test</h3><p>Test</p></div>
-          <div class="card team-card"><img src="images/team-david.jpg" alt="David Koch"><h3>David Koch</h3><p>Barber</p></div>
+        <div class="service-images">
+          <img src="assets/service1.jpg" alt="Leistung Schneiden">
+          <img src="assets/service2.jpg" alt="Leistung Färben">
         </div>
-      </div>
-    </section>
-
-<section id="preise">
-  <div class="container">
-    <h2 class="section-title">Preisliste</h2>
-    <p class="section-desc">Unsere transparenten Preise für Damen, Herren und Kinder.</p>
-    <div class="grid cols-3">
-      <div class="card">
-        <h3>Damen</h3>
-        <p>Waschen, Schneiden, Föhnen: ab 45 €<br>Färben/Tönen: ab 50 €<br>Balayage: ab 120 €<br>Hochsteckfrisur: ab 60 €</p>
-      </div>
-      <div class="card">
-        <h3>Herren</h3>
-        <p>Haarschnitt: ab 25 €<br>Waschen, Schneiden, Styling: ab 30 €<br>Bartpflege: ab 15 €<br>Maschinenschnitt: ab 15 €</p>
-      </div>
-      <div class="card">
-        <h3>Kinder</h3>
-        <p>bis 6 Jahre: ab 12 €<br>7–12 Jahre: ab 18 €<br>Teens (13–16 Jahre): ab 22 €</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-    
-    <section id="kontakt">
-      <div class="container">
-        <h2 class="section-title">Kontakt</h2>
-        <div class="grid cols-2">
-          <div class="card">
-            <p>Friseursalon Team Hava<br>Stockacherstr. 146<br>Im Kaufland<br>78532 Tuttlingen</p>
-            <p>Tel. <a href="tel:+4974619110030">+49 7461 9110030</a></p>
-            <p><strong>Öffnungszeiten:</strong><br>Mo-Fr 09:00 - 19:00<br>Sa 09:00 - 18:00</p>
-          </div>
-          <div class="card">
-            <img src="images/salon-innen.jpg" alt="Innenansicht Salon" loading="lazy">
-            <div class="map"></div>
-          </div>
+  <section id="preise" class="section revealable">
+    <div class="container">
+      <h2>Preise</h2>
+      <div class="divider"></div>
+      <div class="grid three price-cards">
+        <div class="card">
+          <h3>Damen</h3>
+          <ul>
+            <li><span>Waschen, Schneiden, Föhnen</span><strong>45 €</strong></li>
+            <li><span>Färben und Tönen</span><strong>50 €</strong></li>
+            <li><span>Balayage</span><strong>120 €</strong></li>
+            <li><span>Hochsteckfrisur</span><strong>60 €</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Herren</h3>
+          <ul>
+            <li><span>Waschen, Schneiden, Stylen</span><strong>30 €</strong></li>
+            <li><span>Bartpflege</span><strong>15 €</strong></li>
+            <li><span>Maschinenschnitt</span><strong>15 €</strong></li>
+            <li><span>Färben</span><strong>40 €</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Kinder</h3>
+          <ul>
+            <li><span>Bis 6 Jahre</span><strong>15 €</strong></li>
+            <li><span>Bis 12 Jahre</span><strong>18 €</strong></li>
+          </ul>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer>
+  <section id="team" class="section revealable">
     <div class="container">
-      <p>© <span id="year"></span> Friseursalon Team Hava</p>
+      <h2>Unser Team</h2>
+      <div class="divider"></div>
+      <div class="team-placeholder">
+        <div class="ph"></div>
+        <div class="ph"></div>
+        <div class="ph"></div>
+      </div>
+      <p class="hint">Platzhalter für Teamfotos. Wir fügen die Bilder später ein.</p>
+    </div>
+  </section>
+
+  <section id="kontakt" class="section revealable">
+    <div class="container">
+      <h2>Öffnungszeiten & Kontakt</h2>
+      <div class="divider"></div>
+      <div class="grid two">
+        <div class="copy">
+          <p>Friseursalon Team Hava<br>
+          Stockacherstr. 146, Im Kaufland<br>
+          78532 Tuttlingen</p>
+          <p>Tel.: <a href="tel:+4974619110030">+49 7461 9110030</a><br>
+          Email: <a href="mailto:info@teamhava.de">info@teamhava.de</a></p>
+          <p><strong>Öffnungszeiten</strong><br>
+          Mo-Fr 09:00 - 19:00<br>
+          Sa 09:00 - 18:00</p>
+          <p>Wir arbeiten ohne Termine - kommen Sie einfach vorbei.<br>Falls Sie einen Termin wünschen, rufen Sie einfach an – Wir freuen uns auf Sie!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container foot">
+      <p>© 2025 Friseursalon Team Hava</p>
+      <a class="to-top" href="#home">Nach oben</a>
     </div>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('menu');
-    toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-  </script>
 </body>
 </html>
