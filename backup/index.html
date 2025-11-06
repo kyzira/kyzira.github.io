@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Friseursalon Team Hava – Tuttlingen</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Fade-in on scroll
+  const io = new IntersectionObserver((entries)=>{
+    for (const e of entries) {
+      if (e.isIntersecting) e.target.classList.add('reveal');
+    }
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.revealable').forEach(el => io.observe(el));
+});
+</script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="menu">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#preise">Preise</a>
+        <a href="#team">Team</a>
+        <a href="#kontakt">Öffnungszeiten</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Friseursalon Team Hava Logo">
+      </div>
+    </div>
+  </header>
+
+  <section id="home" class="hero" style="background-image: url('assets/hero.jpg');">
+    <div class="shade"></div>
+    <div class="hero-text">
+      <h1>Ihr Salon in Tuttlingen</h1>
+      <p>Haarschnitte, Farbe und Styling in angenehmer Atmosphäre</p>
+    </div>
+  </section>
+
+  <section id="leistungen" class="section revealable">
+    <div class="container">
+      <h2>Unsere Leistungen</h2>
+      <div class="divider"></div>
+      <div class="grid two">
+        <div class="copy">
+          <h3><img class="icon" src="assets/ico_schere.png" alt=""> Haarschnitte</h3>
+          <p>Präzise Haarschnitte für Damen und Herren. Ob Kurzhaarschnitt oder schöne Stufen - wir arbeiten mit höchster Sorgfalt und Präzision.</p>
+          <h3><img class="icon" src="assets/ico_pinsel.png" alt=""> Farbe</h3>
+          <p>Balayage, Strähnen, Ansatz oder Farbkorrektur - wir setzen Ihre Wünsche hochwertig um.</p>
+          <h3><img class="icon" src="assets/ico_kamm.png" alt=""> Styling</h3>
+          <p>Föhnen, Wellen oder Hochsteckfrisuren für besondere Anlässe - wir nehmen uns Zeit für Sie.</p>
+        </div>
+        <div class="service-images">
+          <img src="assets/service1.jpg" alt="Leistung Schneiden">
+          <img src="assets/service2.jpg" alt="Leistung Färben">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preise" class="section revealable">
+    <div class="container">
+      <h2>Preise</h2>
+      <div class="divider"></div>
+      <div class="grid three price-cards">
+        <div class="card">
+          <h3>Damen</h3>
+          <ul>
+            <li><span>Waschen, Schneiden, Föhnen</span><strong>45 €</strong></li>
+            <li><span>Färben und Tönen</span><strong>50 €</strong></li>
+            <li><span>Balayage</span><strong>120 €</strong></li>
+            <li><span>Hochsteckfrisur</span><strong>60 €</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Herren</h3>
+          <ul>
+            <li><span>Waschen, Schneiden, Stylen</span><strong>30 €</strong></li>
+            <li><span>Bartpflege</span><strong>15 €</strong></li>
+            <li><span>Maschinenschnitt</span><strong>15 €</strong></li>
+            <li><span>Färben</span><strong>40 €</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Kinder</h3>
+          <ul>
+            <li><span>Bis 6 Jahre</span><strong>15 €</strong></li>
+            <li><span>Bis 12 Jahre</span><strong>18 €</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="section revealable">
+    <div class="container">
+      <h2>Unser Team</h2>
+      <div class="divider"></div>
+      <div class="team-placeholder">
+        <div class="ph"></div>
+        <div class="ph"></div>
+        <div class="ph"></div>
+      </div>
+      <p class="hint">Platzhalter für Teamfotos. Wir fügen die Bilder später ein.</p>
+    </div>
+  </section>
+
+  <section id="galerie" class="section revealable">
+    <div class="container">
+      <h2>Galerie</h2>
+      <div class="divider"></div>
+      <div class="team-placeholder">
+        <div class="ph"></div>
+        <div class="ph"></div>
+        <div class="ph"></div>
+      </div>
+      <p class="hint">Platzhalter für Frisuren. Wir fügen die Bilder später ein.</p>
+    </div>
+  </section>
+
+
+  <section id="kontakt" class="section revealable">
+    <div class="container">
+      <h2>Öffnungszeiten & Kontakt</h2>
+      <div class="divider"></div>
+      <div class="grid two">
+        <div class="copy">
+          <p>Friseursalon Team Hava<br>
+          Stockacherstr. 146, Im Kaufland<br>
+          78532 Tuttlingen</p>
+          <p>Tel.: <a href="tel:+4974619110030">+49 7461 9110030</a><br>
+          Email: <a href="mailto:info@teamhava.de">info@teamhava.de</a></p>
+          <p><strong>Öffnungszeiten</strong><br>
+          Mo-Fr 09:00 - 19:00<br>
+          Sa 09:00 - 18:00</p>
+          <p>Wir arbeiten ohne Termine - kommen Sie einfach vorbei.<br>Falls Sie einen Termin wünschen, rufen Sie einfach an – Wir freuen uns auf Sie!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container foot">
+      <p>© 2025 Friseursalon Team Hava</p>
+      <a class="to-top" href="#home">Nach oben</a>
+    </div>
+  </footer>
+</body>
+</html>
