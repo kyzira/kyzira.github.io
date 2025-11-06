@@ -12,7 +12,7 @@ html,body{height:100%}
 body{
   margin:0;
   color:var(--text);
-  background: linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+  background-color: #000;
   font-family: inherit;
   line-height:1.6;
 }
@@ -93,38 +93,3 @@ h2{margin:0; font-size:clamp(22px,3.5vw,36px)}
 /* Fade-in Animations */
 .revealable{opacity:0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease}
 .revealable.reveal{opacity:1; transform: translateY(0)}
-
-
-/* Hamburger-Menü */
-.menu-toggle {
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 1.8rem;
-  cursor: pointer;
-  display: none;
-}
-
-.menu.hidden {
-  display: none;
-}
-
-@media (max-width: 900px) {
-  .menu-toggle {
-    display: block;
-  }
-  .menu {
-    position: absolute;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.95);
-    border-top: 1px solid rgba(212,175,55,.25);
-    padding: 1rem;
-  }
-  .menu a {
-    display: block;
-    margin: 10px 0;
-  }
-}
