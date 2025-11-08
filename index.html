@@ -6,9 +6,39 @@
 <meta name="color-scheme" content="dark">
 <title>Friseursalon Team Hava – Tuttlingen</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+/* Öffnungszeiten im Hero unten links */
+.hero-hours{
+  position:absolute;
+  bottom:30px;
+  left:30px;
+  background:rgba(0,0,0,0.65);
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:10px;
+  padding:14px 20px;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.5;
+  box-shadow:0 8px 20px rgba(0,0,0,.4);
+  max-width:240px;
+}
+.hero-hours strong{
+  color:var(--gold);
+  display:block;
+  margin-bottom:4px;
+}
+@media(max-width:700px){
+  .hero-hours{
+    bottom:16px;
+    left:16px;
+    padding:10px 14px;
+    font-size:14px;
+  }
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
@@ -17,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Fade-in on scroll
   const io = new IntersectionObserver((entries)=>{
     for (const e of entries) {
       if (e.isIntersecting) e.target.classList.add('reveal');
@@ -27,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 </head>
+
 <body>
   <header class="topbar">
     <div class="container">
       <nav class="menu">
         <a href="#leistungen">Leistungen</a>
-        <a href="#preise">Preise</a>
         <a href="#team">Team</a>
         <a href="#kontakt">Öffnungszeiten</a>
         <a href="#kontakt">Kontakt</a>
@@ -48,6 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="hero-text">
       <h1>Ihr Salon in Tuttlingen</h1>
       <p>Haarschnitte, Farbe und Styling in angenehmer Atmosphäre</p>
+    </div>
+    <div class="hero-hours">
+      <strong>Öffnungszeiten</strong>
+      Mo–Fr: 09:00 – 19:00<br>
+      Sa: 09:00 – 18:00<br>
     </div>
   </section>
 
@@ -72,50 +106,27 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </section>
 
-  <section id="preise" class="section revealable">
-    <div class="container">
-      <h2>Preise</h2>
-      <div class="divider"></div>
-      <div class="grid three price-cards">
-        <div class="card">
-          <h3>Damen</h3>
-          <ul>
-            <li><span>Waschen, Schneiden, Föhnen</span><strong>45 €</strong></li>
-            <li><span>Färben und Tönen</span><strong>50 €</strong></li>
-            <li><span>Balayage</span><strong>120 €</strong></li>
-            <li><span>Hochsteckfrisur</span><strong>60 €</strong></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Herren</h3>
-          <ul>
-            <li><span>Waschen, Schneiden, Stylen</span><strong>30 €</strong></li>
-            <li><span>Bartpflege</span><strong>15 €</strong></li>
-            <li><span>Maschinenschnitt</span><strong>15 €</strong></li>
-            <li><span>Färben</span><strong>40 €</strong></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Kinder</h3>
-          <ul>
-            <li><span>Bis 6 Jahre</span><strong>15 €</strong></li>
-            <li><span>Bis 12 Jahre</span><strong>18 €</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="team" class="section revealable">
     <div class="container">
       <h2>Unser Team</h2>
       <div class="divider"></div>
-      <div class="team-placeholder">
-        <div class="ph"></div>
-        <div class="ph"></div>
-        <div class="ph"></div>
+      <div class="grid three team-grid">
+        <div class="card team-card">
+          <img src="assets/team_gurk.jpg" alt="Teammitglied Gurk">
+          <h3>Görkem</h3>
+          <p>Cooler typ</p>
+        </div>
+        <div class="card team-card">
+          <div class="ph"></div>
+          <h3>Name</h3>
+          <p>Position</p>
+        </div>
+        <div class="card team-card">
+          <div class="ph"></div>
+          <h3>Name</h3>
+          <p>Position</p>
+        </div>
       </div>
-      <p class="hint">Platzhalter für Teamfotos. Wir fügen die Bilder später ein.</p>
     </div>
   </section>
 
@@ -131,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
       <p class="hint">Platzhalter für Frisuren. Wir fügen die Bilder später ein.</p>
     </div>
   </section>
-
 
   <section id="kontakt" class="section revealable">
     <div class="container">
