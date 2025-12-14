@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
+
 <title>Friseursalon Team Hava – Ihr Friseur in Tuttlingen</title>
-<meta name="description" content="Friseursalon Team Hava in Tuttlingen. Professionelle Haarschnitte, Farbe & Styling ohne Termin. Besuchen Sie uns im Kaufland!">
+<meta name="description" content="Damen- & Herrenfriseur in Tuttlingen (Kaufland). Haarschnitte, Balayage & Styling ohne Termin. Jetzt vorbeikommen!">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://friseursalon-team-hava.de/" />
+
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+
+<meta property="og:title" content="Friseursalon Team Hava – Tuttlingen">
+<meta property="og:description" content="Ihr Friseur im Kaufland. Ohne Termin.">
+<meta property="og:image" content="https://friseursalon-team-hava.de/assets/team_gesamt.jpg">
+<meta property="og:url" content="https://friseursalon-team-hava.de/">
+<meta property="og:type" content="website">
+
 <link rel="stylesheet" href="styles.css">
+
 <style>
+/* Zusätzliche Styles für Elemente direkt im HTML */
+
 /* Öffnungszeiten im Hero unten links */
 .hero-hours{
   position:absolute;
@@ -23,12 +39,15 @@
   line-height:1.5;
   box-shadow:0 8px 20px rgba(0,0,0,.4);
   max-width:240px;
+  z-index: 2; /* Sicherstellen, dass es über dem Overlay liegt */
 }
 .hero-hours strong{
   color:var(--gold);
   display:block;
   margin-bottom:4px;
 }
+
+/* Anpassung für mobile Geräte */
 @media(max-width:700px){
   .hero-hours{
     bottom:16px;
@@ -41,7 +60,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Smooth Scroll für Anker
+  // 1. Smooth Scroll für Anker-Links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
@@ -51,12 +70,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Reveal Animation on Scroll
+  // 2. Reveal Animation beim Scrollen
   const io = new IntersectionObserver((entries)=>{
     for (const e of entries) {
-      if (e.isIntersecting) e.target.classList.add('reveal');
+      if (e.isIntersecting) {
+        e.target.classList.add('reveal');
+        // Optional: Beobachtung beenden, damit es nicht immer wieder einblendet
+        // io.unobserve(e.target); 
+      }
     }
-  }, { threshold: 0.1 });
+  }, { threshold: 0.1 }); // 10% sichtbar reicht zum Auslösen
+
   document.querySelectorAll('.revealable').forEach(el => io.observe(el));
 });
 </script>
@@ -70,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#team">Team</a>
         <a href="#galerie">Galerie</a>
         <a href="#kontakt">Kontakt</a>
+        <a href="#impressum">Impressum</a>
       </nav>
       <div class="logo">
         <a href="#home">
@@ -119,23 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="container">
       <h2>Unser Team</h2>
       <div class="divider"></div>
-      <div class="grid three team-grid">
-        <div class="card team-card">
-          <img src="assets/hdhdbd.jpg" alt="Teammitglied 1">
-          <h3>Name 1</h3>
-          <p>Friseurmeisterin</p>
-        </div>
-        <div class="card team-card">
-          <div class="ph" style="height:200px; background:rgba(255,255,255,0.05); margin-bottom:12px; border-radius:10px;"></div>
-          <h3>Name 2</h3>
-          <p>Stylistin</p>
-        </div>
-        <div class="card team-card">
-          <div class="ph" style="height:200px; background:rgba(255,255,255,0.05); margin-bottom:12px; border-radius:10px;"></div>
-          <h3>Name 3</h3>
-          <p>Stylistin</p>
-        </div>
+      
+      <div class="team-single-image">
+        <img src="assets/team_gesamt.jpg" alt="Das Team von Friseursalon Hava">
       </div>
+
     </div>
   </section>
 
@@ -143,11 +156,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="container">
       <h2>Galerie</h2>
       <div class="divider"></div>
-      <div class="team-placeholder">
-        <div class="ph"></div>
-        <div class="ph"></div>
-        <div class="ph"></div>
-      </div>
+      
+      <div class="gallery-grid">
+        </div>
+      
       <p class="hint">Folgen Sie uns auf Instagram für aktuelle Frisuren.</p>
     </div>
   </section>
