@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>Friseursalon Team Hava – Tuttlingen</title>
+<title>Friseursalon Team Hava – Ihr Friseur in Tuttlingen</title>
+<meta name="description" content="Friseursalon Team Hava in Tuttlingen. Professionelle Haarschnitte, Farbe & Styling ohne Termin. Besuchen Sie uns im Kaufland!">
+<meta name="robots" content="index, follow">
 <link rel="stylesheet" href="styles.css">
 <style>
 /* Öffnungszeiten im Hero unten links */
@@ -39,19 +41,22 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Smooth Scroll für Anker
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      const el = document.querySelector(a.getAttribute('href'));
+      const targetId = a.getAttribute('href');
+      const el = document.querySelector(targetId);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
+  // Reveal Animation on Scroll
   const io = new IntersectionObserver((entries)=>{
     for (const e of entries) {
       if (e.isIntersecting) e.target.classList.add('reveal');
     }
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.revealable').forEach(el => io.observe(el));
 });
 </script>
@@ -63,11 +68,13 @@ document.addEventListener('DOMContentLoaded', function() {
       <nav class="menu">
         <a href="#leistungen">Leistungen</a>
         <a href="#team">Team</a>
-        <a href="#kontakt">Öffnungszeiten</a>
+        <a href="#galerie">Galerie</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
       <div class="logo">
-        <img src="assets/logo.png" alt="Friseursalon Team Hava Logo">
+        <a href="#home">
+          <img src="assets/logo.png" alt="Friseursalon Team Hava Logo">
+        </a>
       </div>
     </div>
   </header>
@@ -92,14 +99,17 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="copy">
           <h3><img class="icon" src="assets/ico_schere.png" alt=""> Haarschnitte</h3>
           <p>Präzise Haarschnitte für Damen und Herren. Ob Kurzhaarschnitt oder schöne Stufen - wir arbeiten mit höchster Sorgfalt und Präzision.</p>
+          
           <h3><img class="icon" src="assets/ico_pinsel.png" alt=""> Farbe</h3>
           <p>Balayage, Strähnen, Ansatz oder Farbkorrektur - wir setzen Ihre Wünsche hochwertig um.</p>
+          
           <h3><img class="icon" src="assets/ico_kamm.png" alt=""> Styling</h3>
           <p>Föhnen, Wellen oder Hochsteckfrisuren für besondere Anlässe - wir nehmen uns Zeit für Sie.</p>
         </div>
+        
         <div class="service-images">
-          <img src="assets/service1.jpg" alt="Leistung Schneiden">
-          <img src="assets/service2.jpg" alt="Leistung Färben">
+          <img src="assets/service1.jpg" alt="Leistung Schneiden" loading="lazy">
+          <img src="assets/service2.jpg" alt="Leistung Färben" loading="lazy">
         </div>
       </div>
     </div>
@@ -112,18 +122,18 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="grid three team-grid">
         <div class="card team-card">
           <img src="assets/hdhdbd.jpg" alt="Teammitglied 1">
-          <h3>name</h3>
-          <p> </p>
+          <h3>Name 1</h3>
+          <p>Friseurmeisterin</p>
         </div>
         <div class="card team-card">
-          <div class="ph"></div>
-          <h3>Name</h3>
-          <p>Position</p>
+          <div class="ph" style="height:200px; background:rgba(255,255,255,0.05); margin-bottom:12px; border-radius:10px;"></div>
+          <h3>Name 2</h3>
+          <p>Stylistin</p>
         </div>
         <div class="card team-card">
-          <div class="ph"></div>
-          <h3>Name</h3>
-          <p>Position</p>
+          <div class="ph" style="height:200px; background:rgba(255,255,255,0.05); margin-bottom:12px; border-radius:10px;"></div>
+          <h3>Name 3</h3>
+          <p>Stylistin</p>
         </div>
       </div>
     </div>
@@ -138,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="ph"></div>
         <div class="ph"></div>
       </div>
-      <p class="hint">Platzhalter für Frisuren. Wir fügen die Bilder später ein.</p>
+      <p class="hint">Folgen Sie uns auf Instagram für aktuelle Frisuren.</p>
     </div>
   </section>
 
@@ -148,22 +158,77 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="divider"></div>
       <div class="grid two">
         <div class="copy">
-          <p>Friseursalon Team Hava<br>
-          Stockacherstr. 146, Im Kaufland<br>
+          <p><strong>Friseursalon Team Hava</strong><br>
+          Stockacherstr. 146 (Im Kaufland)<br>
           78532 Tuttlingen</p>
-          <p>Tel.: <a href="tel:+4974619110030">+49 7461 9110030</a><br>
-          Email: <a href="mailto:info@friseursalon-team-hava.de">info@friseursalon-team-hava.de</a></p>
+          
+          <p>
+            Tel.: <a href="tel:+4974619110030">+49 7461 9110030</a><br>
+            Email: <a href="mailto:info@friseursalon-team-hava.de">info@friseursalon-team-hava.de</a>
+          </p>
+          
           <p><strong>Öffnungszeiten</strong><br>
           Mo-Sa 09:00 - 19:00</p>
-          <p>Wir arbeiten ohne Termine - kommen Sie einfach vorbei.<br>Falls Sie einen Termin wünschen, rufen Sie einfach an – Wir freuen uns auf Sie!</p>
+          
+          <p style="margin-top:20px; color: var(--gold);">
+            Wir arbeiten ohne Termine - kommen Sie einfach vorbei.<br>
+            Falls Sie einen Wunschtermin haben, rufen Sie einfach an!
+          </p>
+        </div>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://maps.google.com/maps?q=Stockacherstr.+146,+78532+Tuttlingen&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                frameborder="0" 
+                scrolling="no" 
+                marginheight="0" 
+                marginwidth="0" 
+                style="filter: invert(90%) hue-rotate(180deg);" 
+                allowfullscreen>
+            </iframe>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="impressum" class="section revealable" style="padding-top: 40px; padding-bottom: 40px; background: rgba(255,255,255,0.02);">
+    <div class="container">
+        <h2>Impressum</h2>
+        <div class="divider"></div>
+        <div class="copy" style="font-size: 0.9em; color: var(--muted);">
+            <p><strong>Angaben gemäß § 5 TMG</strong></p>
+            <p>
+                Friseursalon Team Hava<br>
+                Inhaber: Hava Batagan<br>
+                Stockacherstr. 146 (im Kaufland)<br>
+                78532 Tuttlingen
+            </p>
+            <p>
+                <strong>Kontakt:</strong><br>
+                Telefon: +49 7461 9110030<br>
+                E-Mail: info@friseursalon-team-hava.de
+            </p>
+            <p>
+                <strong>Umsatzsteuer:</strong><br>
+                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE[NUMMER EINFÜGEN]
+            </p>
+            <p style="font-size: 0.8em; margin-top: 20px;">
+                <strong>Streitschlichtung</strong><br>
+                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr.<br>
+                Unsere E-Mail-Adresse finden Sie oben im Impressum.<br>
+                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+        </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container foot">
       <p>© 2025 Friseursalon Team Hava</p>
+      <div class="footer-links">
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </div>
       <a class="to-top" href="#home">Nach oben</a>
     </div>
   </footer>
