@@ -57,7 +57,7 @@ a:hover{text-decoration:underline}
   /* NEU: Absolut positioniert, damit es den Balken nicht aufdrückt */
   position: absolute;
   right: 24px;  /* Gleicher Abstand wie der Container Rand */
-  top: 0;       /* Startet direkt oben am Rand */
+  top: 24px;       /* Startet direkt oben am Rand */
   
   z-index: 1001;
   transition: transform 0.3s ease;
