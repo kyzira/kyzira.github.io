@@ -1,34 +1,57 @@
 import os
 
-IMAGE_DIR = "assets/frisuren"
+VORHER_DIR = "assets/vorher"
+NACHER_DIR = "assets/nacher"
 HTML_FILE = "index.html"
 
-allowed_ext = (".jpg", ".jpeg", ".png", ".webp")
+def generate_blocks():
+    blocks = []
+    files = sorted(os.listdir(VORHER_DIR))
 
-# Bilder sammeln
-images = sorted([
-    f for f in os.listdir(IMAGE_DIR)
-    if f.lower().endswith(allowed_ext)
-])
+    for file in files:
+        vorher_path = f"{VORHER_DIR}/{file}"
+        nacher_path = f"{NACHER_DIR}/{file}"
 
-# HTML für Galerie erzeugen
-gallery_html = "\n".join([
-    f'        <img src="{IMAGE_DIR}/{img}" alt="Frisur {i+1}" loading="lazy">'
-    for i, img in enumerate(images)
-])
+        if not os.path.exists(nacher_path):
+            print(f"⚠️ Kein Nachher-Bild für {file}")
+            continue
 
-# HTML-Datei laden
-with open(HTML_FILE, "r", encoding="utf-8") as f:
-    html = f.read()
+        block = f"""
+<div class="before-after">
+  <div class="before-after-grid">
+    <div>
+      <img src="{vorher_path}" alt="Vorher Frisur">
+      <div class="before-after-label label-before">Vorher</div>
+    </div>
+    <div>
+      <img src="{nacher_path}" alt="Nachher Frisur">
+      <div class="before-after-label label-after">Nachher</div>
+    </div>
+  </div>
+</div>
+"""
+        blocks.append(block)
 
-# Platzhalter ersetzen
-html = html.replace(
-    "<!-- GALLERY_IMAGES -->",
-    gallery_html
-)
+    return "\n".join(blocks)
 
-# Datei zurückschreiben
-with open(HTML_FILE, "w", encoding="utf-8") as f:
-    f.write(html)
 
-print(f"{len(images)} Bilder in die Galerie eingefügt.")
+def insert_into_html(blocks):
+    with open(HTML_FILE, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    start = "<div class=\"gallery-grid\" id=\"before-after-gallery\">"
+    end = "</div>"
+
+    before, rest = html.split(start)
+    _, after = rest.split(end, 1)
+
+    new_html = before + start + blocks + "\n    " + end + after
+
+    with open(HTML_FILE, "w", encoding="utf-8") as f:
+        f.write(new_html)
+
+
+if __name__ == "__main__":
+    blocks = generate_blocks()
+    insert_into_html(blocks)
+    print("✅ Galerie erfolgreich aktualisiert")
