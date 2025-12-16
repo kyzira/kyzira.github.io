@@ -29,14 +29,17 @@ a:hover{text-decoration:underline}
   border-bottom:1px solid rgba(212,175,55,.25);
 }
 .container{max-width:1400px;margin:0 auto;padding:0 24px}
-.topbar .container{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  /* height:100px; ENTFERNT, damit flexibel */
-  padding-top: 10px;
-  padding-bottom: 10px;
-  min-height: 100px; 
+.topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* NEU: Fixe, sehr kleine Höhe */
+  height: 50px;
+  min-height: 0;
+  padding: 0 24px; /* Nur seitlicher Abstand */
+  
+  position: relative; /* Wichtig, damit das Logo sich hieran orientiert */
 }
 .menu a{
   margin-right:24px;
@@ -51,22 +54,32 @@ a:hover{text-decoration:underline}
 
 /* Logo Anpassung (Ragt über) */
 .logo {
-  position: relative;
-  top: 35px; /* Schiebt das Logo nach unten raus */
-  margin-bottom: -35px; /* Verhindert, dass die Leiste mit wächst */
+  /* NEU: Absolut positioniert, damit es den Balken nicht aufdrückt */
+  position: absolute;
+  right: 24px;  /* Gleicher Abstand wie der Container Rand */
+  top: 0;       /* Startet direkt oben am Rand */
+  
   z-index: 1001;
   transition: transform 0.3s ease;
+  
+  /* Keine Margins mehr nötig */
+  margin-bottom: 0;
 }
 .logo:hover {
   transform: scale(1.05);
 }
-.logo img{
-  max-height:180px; /* Deutlich größer */
-  height:auto;
-  width:auto;
-  display:block;
-  image-rendering:-webkit-optimize-contrast;
-  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.9)); /* Stärkerer Schatten für Kontrast */
+.logo img {
+  max-height: 230px; /* Bleibt schön groß */
+  height: auto;
+  width: auto;
+  display: block;
+  
+  /* Optional: Wenn das Logo etwas mehr Abstand von oben haben soll, 
+     kannst du hier margin-top hinzufügen, z.B.: */
+  /* margin-top: 10px; */
+  
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.9));
 }
 
 /* Hero */
@@ -100,7 +113,7 @@ h2{margin:0;font-size:clamp(22px,3.5vw,36px); color: var(--gold);}
   .grid.two,.grid.three{grid-template-columns:1fr}
   /* Logo Mobil anpassen, damit es nicht stört */
   .logo { top: 0; margin-bottom: 0; }
-  .logo img { max-height: 100px; }
+  .logo img { max-height: 150px; }
 }
 
 /* Leistungen mit Icons links neben Titel */
@@ -265,4 +278,46 @@ h2{margin:0;font-size:clamp(22px,3.5vw,36px); color: var(--gold);}
 .team-single-image img:hover {
   transform: scale(1.01); /* Leichter Zoom beim Drüberfahren */
   border-color: var(--gold);
+}
+
+
+/* ============================
+   Zwei Teamfotos nebeneinander
+   ============================ */
+.team-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.team-images img {
+  width: 100%;
+  aspect-ratio: 3 / 4;   /* HOCHKANT */
+  height: auto;          /* Höhe ergibt sich automatisch */
+  object-fit: cover;
+  object-position: center top; /* Fokus oben (Gesicht) */
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(212,175,55,0.25);
+  box-shadow: 0 12px 30px rgba(0,0,0,.45);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+
+.team-images img:hover {
+  transform: scale(1.01);
+  border-color: var(--gold);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .team-images {
+    grid-template-columns: 1fr;
+  }
+
+  .team-images img {
+    height: 320px;
+  }
 }
