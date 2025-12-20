@@ -19,12 +19,12 @@ body{
 a{color:var(--gold);text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Topbar: Navigation links, Logo rechts */
+/* Topbar: Menü nun zentriert */
 .topbar{
   position:sticky;
   top:0;
-  z-index:1000; /* Erhöht, damit es immer oben bleibt */
-  background:rgba(0,0,0,.85); /* Etwas dunkler für bessere Lesbarkeit */
+  z-index:1000;
+  background:rgba(0,0,0,.85);
   backdrop-filter:blur(10px);
   border-bottom:1px solid rgba(212,175,55,.25);
 }
@@ -32,14 +32,8 @@ a:hover{text-decoration:underline}
 .topbar .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  
-  /* NEU: Fixe, sehr kleine Höhe */
+  justify-content: center;
   height: 50px;
-  min-height: 0;
-  padding: 0 24px; /* Nur seitlicher Abstand */
-  
-  position: relative; /* Wichtig, damit das Logo sich hieran orientiert */
 }
 .menu a{
   margin-right:24px;
@@ -52,34 +46,22 @@ a:hover{text-decoration:underline}
 .menu a:last-child{margin-right:0}
 .menu a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 
-/* Logo Anpassung (Ragt über) */
-.logo {
-  /* NEU: Absolut positioniert, damit es den Balken nicht aufdrückt */
+/* Logo oben rechts im Hero */
+.hero-logo {
   position: absolute;
-  right: 24px;  /* Gleicher Abstand wie der Container Rand */
-  top: 24px;       /* Startet direkt oben am Rand */
-  
-  z-index: 1001;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
   transition: transform 0.3s ease;
-  
-  /* Keine Margins mehr nötig */
-  margin-bottom: 0;
 }
-.logo:hover {
-  transform: scale(1.05);
+.hero-logo:hover {
+  transform: scale(1.02);
 }
-.logo img {
-  max-height: 230px; /* Bleibt schön groß */
-  height: auto;
+.hero-logo img {
+  max-height: 180px;
   width: auto;
   display: block;
-  
-  /* Optional: Wenn das Logo etwas mehr Abstand von oben haben soll, 
-     kannst du hier margin-top hinzufügen, z.B.: */
-  /* margin-top: 10px; */
-  
-  image-rendering: -webkit-optimize-contrast;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.9));
+  filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8));
 }
 
 /* Hero */
@@ -108,23 +90,8 @@ h2{margin:0;font-size:clamp(22px,3.5vw,36px); color: var(--gold);}
 .divider{height:2px;width:120px;background:linear-gradient(to right,var(--gold),transparent);margin:16px 0 28px 0}
 .grid{display:grid;gap:28px}
 .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:980px){
-  .grid.two,.grid.three{grid-template-columns:1fr}
-  
-  /* Logo Mobil anpassen */
-  .logo { 
-    top: 40px;      /* HIER GEÄNDERT: Von 0 auf 10px (oder mehr), schiebt es runter */
-    margin-bottom: 0; 
-  }
-  
-  /* Optional: Falls das Logo auch "zu groß" ist, hier den Wert verringern */
-  .logo img { 
-    max-height: 120px; /* HIER EVENTUELL ANPASSEN (vorher 150px) */
-  }
-}
 
-/* Leistungen mit Icons links neben Titel */
+/* Leistungen */
 .copy h3{display:flex;align-items:center;gap:10px;margin:18px 0 8px 0; color: var(--text);}
 .icon{width:26px;height:26px;object-fit:contain}
 .service-images{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -134,264 +101,74 @@ h2{margin:0;font-size:clamp(22px,3.5vw,36px); color: var(--gold);}
   object-fit:cover;
   border-radius:10px;
   border:1px solid rgba(212,175,55,0.25);
-  box-shadow:0 8px 20px rgba(0,0,0,.35);
 }
 
-/* Preis-Karten */
-.price-cards .card{
-  border:1px solid rgba(212,175,55,0.25);
-  background:linear-gradient(180deg,rgba(20,12,8,.5),rgba(0,0,0,.7));
-  border-radius:14px;
-  padding:18px 18px 8px;
-  box-shadow:0 12px 30px rgba(0,0,0,.35);
+/* Galerie & Mobile Slider */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
 }
-.price-cards ul{list-style:none;padding:0;margin:0}
-.price-cards li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(212,175,55,0.25)}
-.price-cards li:last-child{border-bottom:none}
-.price-cards strong{color:var(--gold)}
-
-/* Team Platzhalter */
-.team-placeholder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.team-placeholder .ph{
-  height:260px;
-  border-radius:12px;
-  border:1px dashed rgba(212,175,55,.35);
-  background:repeating-linear-gradient(45deg,rgba(212,175,55,.06) 0 10px,rgba(0,0,0,.06) 10px 20px);
-}
-.hint{color:var(--muted);margin-top:8px}
-
-/* Team-Karten */
-.team-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;
-}
-.team-card{
-  border:1px solid rgba(212,175,55,0.25);
-  background:linear-gradient(180deg,rgba(20,12,8,.5),rgba(0,0,0,.7));
-  border-radius:12px;
-  padding:16px;
-  text-align:center;
-  box-shadow:0 12px 30px rgba(0,0,0,.35);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-.team-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--gold);
-}
-.team-card img{
-  width:100%;
-  height:auto;
-  max-width:250px;
-  object-fit:cover;
-  border-radius:10px;
-  border:1px solid rgba(212,175,55,0.25);
-  margin-bottom:12px;
-}
-.team-card h3{
-  margin:4px 0 2px;
-  font-size:18px;
-  color:var(--gold);
-}
-.team-card p{
-  margin:0;
-  color:var(--muted);
-  font-size:15px;
-}
-@media(max-width:700px){
-  .team-grid{
-    grid-template-columns:1fr;
-    gap:20px;
-  }
-  .team-card img{
-    max-width:180px;
-    margin:0 auto;
-    display:block;
-  }
-}
-
-/* Map Container */
-.map-container iframe {
+.gallery-grid img {
   width: 100%;
-  height: 350px;
+  height: 300px;
+  object-fit: cover;
   border-radius: 12px;
-  border: 1px solid rgba(212,175,55,0.25);
-  box-shadow: 0 8px 20px rgba(0,0,0,.4);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: #1a1a1a;
+}
+
+/* Teamfoto - Zentriert & Responsiv */
+.team-images {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.team-images img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .45);
 }
 
 /* Footer */
 .footer{
   border-top:1px solid rgba(212,175,55,.25);
   padding:24px 0;
-  background:rgba(0,0,0,.9); /* Dunkler */
+  background:rgba(0,0,0,.9);
   margin-top:24px;
 }
 .foot{display:flex;align-items:center;justify-content:space-between; flex-wrap: wrap; gap: 20px;}
-.footer-links a { color: var(--muted); margin-left: 20px; font-size: 0.9em; }
-.footer-links a:hover { color: var(--gold); }
 .to-top{color:var(--gold)}
 
-/* Fade-in Animations */
-.revealable{
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .6s ease,transform .6s ease;
-}
-.revealable.reveal{
-  opacity:1;
-  transform:translateY(0);
-}
+/* Animations */
+.revealable{opacity:0;transform:translateY(20px);transition:all .6s ease;}
+.revealable.reveal{opacity:1;transform:translateY(0);}
 
-/* Neue Galerie Grid */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Automatische Spalten */
-  gap: 16px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: 300px; /* Einheitliche Höhe */
-  object-fit: cover; /* Bilder werden zugeschnitten, nicht verzerrt */
-  border-radius: 12px;
-  border: 1px solid rgba(212,175,55,0.25);
-  transition: transform 0.3s ease;
-  background: #1a1a1a;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.02);
-  border-color: var(--gold);
-}
-
-
-/* ============================
-   Einzelnes Teamfoto
-   ============================ */
-.team-single-image {
-  max-width: 1000px; /* Begrenzt die Breite auf großen Bildschirmen */
-  margin: 0 auto;    /* Zentriert das Bild */
-}
-
-.team-single-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  border: 1px solid rgba(212,175,55,0.25); /* Goldener Rand wie überall */
-  box-shadow: 0 12px 30px rgba(0,0,0,.45); /* Schöner Schatten */
-  transition: transform 0.3s ease;
-}
-
-.team-single-image img:hover {
-  transform: scale(1.01); /* Leichter Zoom beim Drüberfahren */
-  border-color: var(--gold);
-}
-
-
-/* ============================
-   Zwei Teamfotos nebeneinander
-   ============================ */
-.team-images {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.team-images img {
-  width: 100%;
-  aspect-ratio: 3 / 5;   /* HOCHKANT */
-  height: auto;          /* Höhe ergibt sich automatisch */
-  object-fit: cover;
-  object-position: center top; /* Fokus oben (Gesicht) */
-  display: block;
-  border-radius: 12px;
-  border: 1px solid rgba(212,175,55,0.25);
-  box-shadow: 0 12px 30px rgba(0,0,0,.45);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-
-.team-images img:hover {
-  transform: scale(1.01);
-  border-color: var(--gold);
-}
-
-/* Mobile */
+/* Mobile Breakpoints */
 @media (max-width: 700px) {
-  .team-images {
-    grid-template-columns: 1fr;
+  .hero-logo { top: 15px; right: 15px; }
+  .hero-logo img { max-height: 100px; }
+  
+  .grid.two { grid-template-columns: 1fr; }
+  
+  .gallery-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 15px;
+    gap: 12px;
+    -webkit-overflow-scrolling: touch;
   }
-
-  .team-images img {
-    height: 320px;
+  .gallery-grid img {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    height: 350px;
   }
-}
-/* ============================
-   Vorher / Nachher – FIXED SIZE
-   ============================ */
+  .gallery-grid::-webkit-scrollbar { display: none; }
 
-.before-after {
-  border: 1px solid rgba(212,175,55,0.25);
-  border-radius: 14px;
-  overflow: hidden;
-  background: linear-gradient(180deg, rgba(20,12,8,.55), rgba(0,0,0,.85));
-  box-shadow: 0 10px 25px rgba(0,0,0,.45);
-}
-
-/* Feste Kartenhöhe */
-.before-after-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 220px; /* ⭐ Einheitliche Höhe */
-}
-
-/* Wrapper für jedes Bild */
-.before-after-item {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Bild selbst */
-.before-after-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;        /* KEINE Verzerrung */
-  object-position: center top; /* Fokus Gesicht */
-  display: block;
-}
-
-/* Labels */
-.before-after-label {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 6px 0;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .4px;
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
-
-.label-before {
-  background: rgba(0,0,0,.65);
-  color: #ffb3b3;
-}
-
-.label-after {
-  background: rgba(212,175,55,.25);
-  color: var(--gold);
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .before-after-grid {
-    grid-template-columns: 1fr;
-    height: 420px; /* 2 Bilder untereinander */
-  }
+  .team-images img { max-width: 100%; }
 }
