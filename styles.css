@@ -193,11 +193,13 @@ a:focus-visible {
   background: rgba(0, 0, 0, 0.8);
   z-index: 999;
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition);
 }
 
 .mobile-menu-overlay.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Mobile Menu Panel */
@@ -974,7 +976,10 @@ h2 {
     display: flex;
   }
 
-  .mobile-menu-overlay,
+  .mobile-menu-overlay {
+    display: block;
+  }
+
   .mobile-menu {
     display: block;
   }
