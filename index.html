@@ -566,15 +566,29 @@
           }
         }
 
-        // Scroll button handlers
+        // Scroll button handlers with touch support
         if (leftBtn) {
-          leftBtn.addEventListener('click', () => {
+          leftBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            gallery.scrollBy({ left: -gallery.clientWidth * 0.85, behavior: 'smooth' });
+          });
+          leftBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             gallery.scrollBy({ left: -gallery.clientWidth * 0.85, behavior: 'smooth' });
           });
         }
 
         if (rightBtn) {
-          rightBtn.addEventListener('click', () => {
+          rightBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            gallery.scrollBy({ left: gallery.clientWidth * 0.85, behavior: 'smooth' });
+          });
+          rightBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             gallery.scrollBy({ left: gallery.clientWidth * 0.85, behavior: 'smooth' });
           });
         }

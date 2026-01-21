@@ -258,6 +258,7 @@ a:focus-visible {
     rgba(0, 0, 0, 0.5) 50%,
     rgba(0, 0, 0, 0.9) 100%
   );
+  pointer-events: none;
 }
 
 .hero-logo {
@@ -281,7 +282,7 @@ a:focus-visible {
 
 .hero-text {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 0 24px;
   animation: fadeInUp 1s ease-out;
 }
@@ -344,6 +345,14 @@ a:focus-visible {
 
 .btn:active {
   transform: translateY(0);
+}
+
+/* Touch-friendly button */
+@media (pointer: coarse) {
+  .btn {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
 }
 
 .btn svg {
@@ -807,6 +816,8 @@ h2 {
   z-index: 10;
   box-shadow: var(--shadow-md);
   transition: all var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .scroll-indicator:hover {
