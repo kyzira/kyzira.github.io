@@ -723,6 +723,139 @@ h2 {
   transform: rotate(-45deg);
 }
 
+/* Lightbox Navigation Arrows */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  color: #fff;
+  z-index: 2001;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.lightbox-nav:disabled:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-50%);
+}
+
+.lightbox-nav svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+/* Lightbox Counter */
+.lightbox-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Gallery Scroll Indicators */
+.gallery-wrapper {
+  position: relative;
+}
+
+.scroll-indicator {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 175, 55, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+}
+
+.scroll-indicator:hover {
+  background: var(--gold-light);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-indicator svg {
+  width: 20px;
+  height: 20px;
+}
+
+.scroll-indicator-left {
+  left: 8px;
+}
+
+.scroll-indicator-right {
+  right: 8px;
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Gallery Dots */
+.gallery-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.gallery-dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
 /* =============================================
    Impressum Section
    ============================================= */
@@ -923,6 +1056,50 @@ h2 {
     flex-direction: column;
     text-align: center;
     gap: 16px;
+  }
+
+  /* Mobile Lightbox Navigation */
+  .lightbox-nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox-prev {
+    left: 10px;
+  }
+
+  .lightbox-next {
+    right: 10px;
+  }
+
+  .lightbox-counter {
+    bottom: 15px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  /* Mobile Scroll Indicators */
+  .scroll-indicator {
+    display: flex;
+    width: 36px;
+    height: 36px;
+  }
+
+  .scroll-indicator svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Gallery Dots on Mobile */
+  .gallery-dots {
+    display: flex;
+  }
+
+  /* Make gallery images tappable */
+  .gallery-grid img,
+  .gallery-grid .before-after {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 

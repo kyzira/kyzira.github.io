@@ -127,12 +127,25 @@
     <div class="container">
       <h2>Unser Salon</h2>
       <div class="divider"></div>
-      <div class="gallery-grid">
-        <img src="assets/salon/1.jpeg" alt="Salon Innenansicht – Empfangsbereich" loading="lazy" class="lightbox-trigger">
-        <img src="assets/salon/2.jpeg" alt="Salon Innenansicht – Frisierstühle" loading="lazy" class="lightbox-trigger">
-        <img src="assets/salon/3.jpeg" alt="Salon Innenansicht – Waschplätze" loading="lazy" class="lightbox-trigger">
-        <img src="assets/salon/4.jpeg" alt="Salon Innenansicht – Spiegel und Arbeitsplatz" loading="lazy" class="lightbox-trigger">
-        <img src="assets/salon/5.jpeg" alt="Salon Innenansicht – Wartebereich" loading="lazy" class="lightbox-trigger">
+      <div class="gallery-wrapper">
+        <button class="scroll-indicator scroll-indicator-left hidden" aria-label="Nach links scrollen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="gallery-grid" data-gallery="salon">
+          <img src="assets/salon/1.jpeg" alt="Salon Innenansicht – Empfangsbereich" loading="lazy" class="lightbox-trigger">
+          <img src="assets/salon/2.jpeg" alt="Salon Innenansicht – Frisierstühle" loading="lazy" class="lightbox-trigger">
+          <img src="assets/salon/3.jpeg" alt="Salon Innenansicht – Waschplätze" loading="lazy" class="lightbox-trigger">
+          <img src="assets/salon/4.jpeg" alt="Salon Innenansicht – Spiegel und Arbeitsplatz" loading="lazy" class="lightbox-trigger">
+          <img src="assets/salon/5.jpeg" alt="Salon Innenansicht – Wartebereich" loading="lazy" class="lightbox-trigger">
+        </div>
+        <button class="scroll-indicator scroll-indicator-right" aria-label="Nach rechts scrollen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+        <div class="gallery-dots" data-for="salon"></div>
       </div>
     </div>
   </section>
@@ -141,31 +154,44 @@
     <div class="container">
       <h2>Vorher / Nachher</h2>
       <div class="divider"></div>
-      <div class="gallery-grid">
-        <div class="before-after">
-          <div class="before-after-grid">
-            <div class="before-after-item">
-              <img src="assets/vorher/1.jpeg" alt="Vorher-Bild Frisur" class="lightbox-trigger">
-              <div class="before-after-label label-before">Vorher</div>
+      <div class="gallery-wrapper">
+        <button class="scroll-indicator scroll-indicator-left hidden" aria-label="Nach links scrollen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="gallery-grid" data-gallery="vorher-nachher">
+          <div class="before-after">
+            <div class="before-after-grid">
+              <div class="before-after-item">
+                <img src="assets/vorher/1.jpeg" alt="Vorher-Bild Frisur" class="lightbox-trigger">
+                <div class="before-after-label label-before">Vorher</div>
+              </div>
+              <div class="before-after-item">
+                <img src="assets/nachher/1.jpeg" alt="Nachher-Bild Frisur" class="lightbox-trigger">
+                <div class="before-after-label label-after">Nachher</div>
+              </div>
             </div>
-            <div class="before-after-item">
-              <img src="assets/nachher/1.jpeg" alt="Nachher-Bild Frisur" class="lightbox-trigger">
-              <div class="before-after-label label-after">Nachher</div>
+          </div>
+          <div class="before-after">
+            <div class="before-after-grid">
+              <div class="before-after-item">
+                <img src="assets/vorher/2.jpeg" alt="Vorher-Bild Frisur" class="lightbox-trigger">
+                <div class="before-after-label label-before">Vorher</div>
+              </div>
+              <div class="before-after-item">
+                <img src="assets/nachher/2.jpeg" alt="Nachher-Bild Frisur" class="lightbox-trigger">
+                <div class="before-after-label label-after">Nachher</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="before-after">
-          <div class="before-after-grid">
-            <div class="before-after-item">
-              <img src="assets/vorher/2.jpeg" alt="Vorher-Bild Frisur" class="lightbox-trigger">
-              <div class="before-after-label label-before">Vorher</div>
-            </div>
-            <div class="before-after-item">
-              <img src="assets/nachher/2.jpeg" alt="Nachher-Bild Frisur" class="lightbox-trigger">
-              <div class="before-after-label label-after">Nachher</div>
-            </div>
-          </div>
-        </div>
+        <button class="scroll-indicator scroll-indicator-right" aria-label="Nach rechts scrollen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+        <div class="gallery-dots" data-for="vorher-nachher"></div>
       </div>
     </div>
   </section>
@@ -221,7 +247,18 @@
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Bild schließen"></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Vorheriges Bild">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
     <img src="" alt="Vergrößertes Bild" id="lightboxImg">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Nächstes Bild">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
 
   <footer class="footer">
@@ -252,7 +289,6 @@
           const el = document.querySelector(targetId);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
-            // Close mobile menu if open
             closeMobileMenu();
           }
         });
@@ -312,19 +348,48 @@
 
       menuOverlay.addEventListener('click', closeMobileMenu);
 
-      // Lightbox
+      // =============================================
+      // Enhanced Lightbox with Navigation & Swipe
+      // =============================================
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
       const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+      const lightboxCounter = document.getElementById('lightboxCounter');
 
-      document.querySelectorAll('.lightbox-trigger').forEach(img => {
-        img.addEventListener('click', function() {
-          lightboxImg.src = this.src;
-          lightboxImg.alt = this.alt;
-          lightbox.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        });
-      });
+      let allImages = [];
+      let currentIndex = 0;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let touchStartY = 0;
+      let touchEndY = 0;
+      let isSwiping = false;
+
+      // Collect all lightbox-trigger images
+      function collectImages() {
+        allImages = Array.from(document.querySelectorAll('.lightbox-trigger'));
+      }
+      collectImages();
+
+      function updateLightbox() {
+        if (allImages.length === 0) return;
+        const img = allImages[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCounter.textContent = `${currentIndex + 1} / ${allImages.length}`;
+
+        // Update navigation button states
+        lightboxPrev.disabled = currentIndex === 0;
+        lightboxNext.disabled = currentIndex === allImages.length - 1;
+      }
+
+      function openLightbox(index) {
+        currentIndex = index;
+        updateLightbox();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
 
       function closeLightbox() {
         lightbox.classList.remove('active');
@@ -332,24 +397,193 @@
         lightboxImg.src = '';
       }
 
+      function nextImage() {
+        if (currentIndex < allImages.length - 1) {
+          currentIndex++;
+          updateLightbox();
+        }
+      }
+
+      function prevImage() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateLightbox();
+        }
+      }
+
+      // Touch-friendly click handling for images
+      let scrollStartX = 0;
+      let scrollStartY = 0;
+      const SCROLL_THRESHOLD = 10;
+
+      allImages.forEach((img, index) => {
+        // Track touch start position to differentiate tap from scroll
+        img.addEventListener('touchstart', function(e) {
+          scrollStartX = e.touches[0].clientX;
+          scrollStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        img.addEventListener('touchend', function(e) {
+          const touchEndX = e.changedTouches[0].clientX;
+          const touchEndY = e.changedTouches[0].clientY;
+          const deltaX = Math.abs(touchEndX - scrollStartX);
+          const deltaY = Math.abs(touchEndY - scrollStartY);
+
+          // Only open lightbox if it was a tap, not a scroll
+          if (deltaX < SCROLL_THRESHOLD && deltaY < SCROLL_THRESHOLD) {
+            e.preventDefault();
+            openLightbox(index);
+          }
+        });
+
+        // Keep click for desktop
+        img.addEventListener('click', function(e) {
+          // Prevent double-firing on touch devices
+          if (e.pointerType === 'touch') return;
+          openLightbox(index);
+        });
+      });
+
+      // Navigation buttons
+      lightboxPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        prevImage();
+      });
+
+      lightboxNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nextImage();
+      });
+
       lightboxClose.addEventListener('click', closeLightbox);
 
+      // Close on background click
       lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) {
           closeLightbox();
         }
       });
 
-      // Close lightbox with Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          if (lightbox.classList.contains('active')) {
-            closeLightbox();
-          }
-          if (mobileMenu.classList.contains('active')) {
-            closeMobileMenu();
+      // Swipe gestures for lightbox
+      lightbox.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isSwiping = false;
+      }, { passive: true });
+
+      lightbox.addEventListener('touchmove', function(e) {
+        touchEndX = e.touches[0].clientX;
+        touchEndY = e.touches[0].clientY;
+        const deltaX = Math.abs(touchEndX - touchStartX);
+        const deltaY = Math.abs(touchEndY - touchStartY);
+
+        // If horizontal movement is greater, it's a swipe
+        if (deltaX > deltaY && deltaX > 30) {
+          isSwiping = true;
+        }
+      }, { passive: true });
+
+      lightbox.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+
+        const deltaX = touchEndX - touchStartX;
+        const minSwipeDistance = 50;
+
+        if (Math.abs(deltaX) > minSwipeDistance) {
+          if (deltaX > 0) {
+            prevImage();
+          } else {
+            nextImage();
           }
         }
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (lightbox.classList.contains('active')) {
+          if (e.key === 'Escape') {
+            closeLightbox();
+          } else if (e.key === 'ArrowLeft') {
+            prevImage();
+          } else if (e.key === 'ArrowRight') {
+            nextImage();
+          }
+        }
+        if (mobileMenu.classList.contains('active') && e.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+
+      // =============================================
+      // Gallery Scroll Indicators & Dots
+      // =============================================
+      document.querySelectorAll('.gallery-wrapper').forEach(wrapper => {
+        const gallery = wrapper.querySelector('.gallery-grid');
+        const leftBtn = wrapper.querySelector('.scroll-indicator-left');
+        const rightBtn = wrapper.querySelector('.scroll-indicator-right');
+        const dotsContainer = wrapper.querySelector('.gallery-dots');
+        const galleryId = gallery.dataset.gallery;
+
+        // Get scrollable items
+        const items = gallery.children;
+        const itemCount = items.length;
+
+        // Create dots
+        if (dotsContainer && itemCount > 0) {
+          for (let i = 0; i < itemCount; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Bild ${i + 1} anzeigen`);
+            dot.addEventListener('click', () => {
+              items[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            });
+            dotsContainer.appendChild(dot);
+          }
+        }
+
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('.gallery-dot') : [];
+
+        // Update indicators based on scroll position
+        function updateIndicators() {
+          const scrollLeft = gallery.scrollLeft;
+          const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+
+          // Update arrow visibility
+          if (leftBtn) {
+            leftBtn.classList.toggle('hidden', scrollLeft <= 10);
+          }
+          if (rightBtn) {
+            rightBtn.classList.toggle('hidden', scrollLeft >= maxScroll - 10);
+          }
+
+          // Update active dot
+          if (dots.length > 0) {
+            const itemWidth = items[0].offsetWidth + 12; // Including gap
+            const activeIndex = Math.round(scrollLeft / itemWidth);
+            dots.forEach((dot, i) => {
+              dot.classList.toggle('active', i === activeIndex);
+            });
+          }
+        }
+
+        // Scroll button handlers
+        if (leftBtn) {
+          leftBtn.addEventListener('click', () => {
+            gallery.scrollBy({ left: -gallery.clientWidth * 0.85, behavior: 'smooth' });
+          });
+        }
+
+        if (rightBtn) {
+          rightBtn.addEventListener('click', () => {
+            gallery.scrollBy({ left: gallery.clientWidth * 0.85, behavior: 'smooth' });
+          });
+        }
+
+        // Listen to scroll events
+        gallery.addEventListener('scroll', updateIndicators, { passive: true });
+
+        // Initial update
+        updateIndicators();
       });
     });
   </script>
