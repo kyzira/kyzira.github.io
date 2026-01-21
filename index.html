@@ -20,121 +20,69 @@
   <meta property="og:url" content="https://friseursalon-team-hava.de/">
   <meta property="og:type" content="website">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <link rel="stylesheet" href="styles.css">
-
-  <style>
-    /* Öffnungszeiten im Hero unten links */
-    .hero-hours {
-      position: absolute;
-      bottom: 30px;
-      left: 30px;
-      background: rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(212, 175, 55, .35);
-      border-radius: 10px;
-      padding: 14px 20px;
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.5;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, .4);
-      max-width: 240px;
-      z-index: 2;
-    }
-
-    .hero-hours strong {
-      color: var(--gold);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    /* Leaflet Dark Mode Anpassung */
-    #map {
-      width: 100%;
-      height: 350px;
-      border-radius: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, .4);
-      filter: invert(90%) hue-rotate(180deg);
-      z-index: 1;
-    }
-
-    .leaflet-marker-icon, .leaflet-marker-shadow {
-      filter: invert(100%) hue-rotate(-180deg);
-    }
-
-    @media(max-width:700px) {
-      .hero-hours {
-        bottom: 16px;
-        left: 16px;
-        padding: 10px 14px;
-        font-size: 14px;
-      }
-    }
-  </style>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          const targetId = a.getAttribute('href');
-          const el = document.querySelector(targetId);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-
-      const io = new IntersectionObserver((entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add('reveal');
-          }
-        }
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.revealable').forEach(el => io.observe(el));
-
-      const lat = 47.97371301499722; 
-      const lng = 8.82710052986536;
-      const map = L.map('map').setView([lat, lng], 17);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap'
-      }).addTo(map);
-
-      L.marker([lat, lng]).addTo(map)
-        .bindPopup('<strong>Friseursalon Team Hava</strong><br>Stockacherstr. 146 (Kaufland)')
-        .openPopup();
-    });
-  </script>
 </head>
 
 <body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#leistungen" class="skip-link">Zum Inhalt springen</a>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+  <!-- Mobile Menu Panel -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#team">Team</a>
+    <a href="#salon">Salon</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
   <header class="topbar">
     <div class="container">
       <nav class="menu">
         <a href="#leistungen">Leistungen</a>
         <a href="#team">Team</a>
+        <a href="#salon">Salon</a>
         <a href="#galerie">Galerie</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
   <section id="home" class="hero" style="background-image: url('assets/hero.jpg');">
     <div class="hero-logo">
-      <a href="#home">
-        <img src="assets/logo.png" alt="Friseursalon Team Hava Logo">
+      <a href="#home" aria-label="Zurück nach oben">
+        <img src="assets/logo.png" alt="Friseursalon Team Hava Logo" width="180" height="180">
       </a>
     </div>
     <div class="shade"></div>
     <div class="hero-text">
       <h1>Ihr Salon in Tuttlingen</h1>
       <p>Haarschnitte, Farbe und Styling in angenehmer Atmosphäre</p>
+      <a href="tel:+4974619110030" class="btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        Jetzt anrufen
+      </a>
     </div>
     <div class="hero-hours">
       <strong>Öffnungszeiten</strong>
-      Mo–Sa: 09:00 – 19:00<br>
+      Mo–Sa: 09:00 – 19:00
     </div>
   </section>
 
@@ -143,17 +91,23 @@
       <h2>Unsere Leistungen</h2>
       <div class="divider"></div>
       <div class="grid two">
-        <div class="copy">
-          <h3><img class="icon" src="assets/ico_schere.png" alt=""> Haarschnitte</h3>
-          <p>Präzise Haarschnitte für Damen und Herren. Ob Kurzhaarschnitt oder schöne Stufen - wir arbeiten mit höchster Sorgfalt und Präzision.</p>
-          <h3><img class="icon" src="assets/ico_pinsel.png" alt=""> Farbe</h3>
-          <p>Balayage, Strähnen, Ansatz oder Farbkorrektur - wir setzen Ihre Wünsche hochwertig um.</p>
-          <h3><img class="icon" src="assets/ico_kamm.png" alt=""> Styling</h3>
-          <p>Föhnen, Wellen oder Hochsteckfrisuren für besondere Anlässe - wir nehmen uns Zeit für Sie.</p>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3><img class="icon" src="assets/ico_schere.png" alt=""> Haarschnitte</h3>
+            <p>Präzise Haarschnitte für Damen und Herren. Ob Kurzhaarschnitt oder schöne Stufen – wir arbeiten mit höchster Sorgfalt und Präzision.</p>
+          </div>
+          <div class="service-card">
+            <h3><img class="icon" src="assets/ico_pinsel.png" alt=""> Farbe</h3>
+            <p>Balayage, Strähnen, Ansatz oder Farbkorrektur – wir setzen Ihre Wünsche hochwertig um.</p>
+          </div>
+          <div class="service-card">
+            <h3><img class="icon" src="assets/ico_kamm.png" alt=""> Styling</h3>
+            <p>Föhnen, Wellen oder Hochsteckfrisuren für besondere Anlässe – wir nehmen uns Zeit für Sie.</p>
+          </div>
         </div>
         <div class="service-images">
-          <img src="assets/service1.jpg" alt="Leistung Schneiden" loading="lazy">
-          <img src="assets/service2.jpg" alt="Leistung Färben" loading="lazy">
+          <img src="assets/service1.jpg" alt="Professioneller Haarschnitt im Salon" loading="lazy" class="lightbox-trigger">
+          <img src="assets/service2.jpg" alt="Haare färben mit Balayage-Technik" loading="lazy" class="lightbox-trigger">
         </div>
       </div>
     </div>
@@ -164,45 +118,57 @@
       <h2>Unser Team</h2>
       <div class="divider"></div>
       <div class="team-images">
-        <img src="assets/team1.jpeg" alt="Teammitglieder Friseursalon Hava" loading="lazy">
+        <img src="assets/team1.jpeg" alt="Das Team von Friseursalon Hava" loading="lazy" class="lightbox-trigger">
       </div>
     </div>
   </section>
 
   <section id="salon" class="section revealable">
-      <div class="container">
-        <h2>Unser Salon</h2>
-        <div class="divider"></div>
-        <div class="gallery-grid">
-          <img src="assets/salon/1.jpeg" alt="Salon 1">
-          <img src="assets/salon/2.jpeg" alt="Salon 2">
-          <img src="assets/salon/3.jpeg" alt="Salon 3">
-          <img src="assets/salon/4.jpeg" alt="Salon 4">
-          <img src="assets/salon/5.jpeg" alt="Salon 5">
-        </div>
+    <div class="container">
+      <h2>Unser Salon</h2>
+      <div class="divider"></div>
+      <div class="gallery-grid">
+        <img src="assets/salon/1.jpeg" alt="Salon Innenansicht – Empfangsbereich" loading="lazy" class="lightbox-trigger">
+        <img src="assets/salon/2.jpeg" alt="Salon Innenansicht – Frisierstühle" loading="lazy" class="lightbox-trigger">
+        <img src="assets/salon/3.jpeg" alt="Salon Innenansicht – Waschplätze" loading="lazy" class="lightbox-trigger">
+        <img src="assets/salon/4.jpeg" alt="Salon Innenansicht – Spiegel und Arbeitsplatz" loading="lazy" class="lightbox-trigger">
+        <img src="assets/salon/5.jpeg" alt="Salon Innenansicht – Wartebereich" loading="lazy" class="lightbox-trigger">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="galerie" class="section revealable">
-      <div class="container">
-        <h2>Vorher / Nachher</h2>
-        <div class="divider"></div>
-        <div class="gallery-grid">
-          <div class="before-after">
-            <div class="before-after-grid">
-              <div class="before-after-item"><img src="assets/vorher/1.jpeg"><div class="before-after-label label-before">Vorher</div></div>
-              <div class="before-after-item"><img src="assets/nacher/1.jpeg"><div class="before-after-label label-after">Nachher</div></div>
+  <section id="galerie" class="section revealable">
+    <div class="container">
+      <h2>Vorher / Nachher</h2>
+      <div class="divider"></div>
+      <div class="gallery-grid">
+        <div class="before-after">
+          <div class="before-after-grid">
+            <div class="before-after-item">
+              <img src="assets/vorher/1.jpeg" alt="Vorher-Bild Frisur" class="lightbox-trigger">
+              <div class="before-after-label label-before">Vorher</div>
+            </div>
+            <div class="before-after-item">
+              <img src="assets/nachher/1.jpeg" alt="Nachher-Bild Frisur" class="lightbox-trigger">
+              <div class="before-after-label label-after">Nachher</div>
             </div>
           </div>
-          <div class="before-after">
-            <div class="before-after-grid">
-              <div class="before-after-item"><img src="assets/vorher/2.jpeg"><div class="before-after-label label-before">Vorher</div></div>
-              <div class="before-after-item"><img src="assets/nacher/2.jpeg"><div class="before-after-label label-after">Nachher</div></div>
+        </div>
+        <div class="before-after">
+          <div class="before-after-grid">
+            <div class="before-after-item">
+              <img src="assets/vorher/2.jpeg" alt="Vorher-Bild Frisur" class="lightbox-trigger">
+              <div class="before-after-label label-before">Vorher</div>
+            </div>
+            <div class="before-after-item">
+              <img src="assets/nachher/2.jpeg" alt="Nachher-Bild Frisur" class="lightbox-trigger">
+              <div class="before-after-label label-after">Nachher</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
   <section id="kontakt" class="section revealable">
     <div class="container">
@@ -218,11 +184,11 @@
             Email: <a href="mailto:info@friseursalon-team-hava.de">info@friseursalon-team-hava.de</a>
           </p>
           <p><strong>Öffnungszeiten</strong><br>
-            Mo-Sa 09:00 - 19:00</p>
-          <p style="margin-top:20px; color: var(--gold);">
-            Wir arbeiten ohne Termine - kommen Sie einfach vorbei.<br>
-            Falls Sie einen Wunschtermin haben, rufen Sie einfach an!
-          </p>
+            Mo–Sa: 09:00 – 19:00</p>
+          <div class="contact-highlight">
+            Wir arbeiten ohne Termine – kommen Sie einfach vorbei!<br>
+            Falls Sie einen Wunschtermin haben, rufen Sie einfach an.
+          </div>
         </div>
         <div class="map-container">
           <div id="map"></div>
@@ -231,11 +197,11 @@
     </div>
   </section>
 
-  <section id="impressum" class="section revealable" style="padding-top: 40px; padding-bottom: 40px; background: rgba(255,255,255,0.02);">
+  <section id="impressum" class="section impressum-section revealable">
     <div class="container">
       <h2>Impressum</h2>
       <div class="divider"></div>
-      <div class="copy" style="font-size: 0.9em; color: var(--muted);">
+      <div class="copy">
         <p><strong>Angaben gemäß § 5 TMG</strong></p>
         <p>
           Friseursalon Team Hava<br>
@@ -252,14 +218,140 @@
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Bild schließen"></button>
+    <img src="" alt="Vergrößertes Bild" id="lightboxImg">
+  </div>
+
   <footer class="footer">
     <div class="container foot">
-      <p>© 2025 Friseursalon Team Hava</p>
+      <p>© <span id="currentYear"></span> Friseursalon Team Hava</p>
       <div class="footer-links">
         <a href="#impressum">Impressum</a>
       </div>
-      <a class="to-top" href="#home">Nach oben</a>
+      <a class="to-top" href="#home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
+        Nach oben
+      </a>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dynamic year
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const targetId = a.getAttribute('href');
+          const el = document.querySelector(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+            // Close mobile menu if open
+            closeMobileMenu();
+          }
+        });
+      });
+
+      // Intersection Observer for reveal animations
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('reveal');
+          }
+        }
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.revealable').forEach(el => io.observe(el));
+
+      // Leaflet Map
+      const lat = 47.97371301499722;
+      const lng = 8.82710052986536;
+      const map = L.map('map').setView([lat, lng], 17);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+      }).addTo(map);
+
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup('<strong>Friseursalon Team Hava</strong><br>Stockacherstr. 146 (Kaufland)')
+        .openPopup();
+
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+
+      function openMobileMenu() {
+        menuToggle.classList.add('active');
+        mobileMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      menuToggle.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      menuOverlay.addEventListener('click', closeMobileMenu);
+
+      // Lightbox
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      document.querySelectorAll('.lightbox-trigger').forEach(img => {
+        img.addEventListener('click', function() {
+          lightboxImg.src = this.src;
+          lightboxImg.alt = this.alt;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Close lightbox with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          if (lightbox.classList.contains('active')) {
+            closeLightbox();
+          }
+          if (mobileMenu.classList.contains('active')) {
+            closeMobileMenu();
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
