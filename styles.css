@@ -887,6 +887,72 @@ h2 {
 }
 
 /* =============================================
+   Legal Pages (Datenschutz, etc.)
+   ============================================= */
+.legal-page {
+  padding: 120px 24px 60px;
+  min-height: 80vh;
+}
+
+.legal-page h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.legal-content {
+  max-width: 800px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.legal-content h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text);
+  margin: 40px 0 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.legal-content h2:first-of-type {
+  margin-top: 24px;
+  border-top: none;
+  padding-top: 0;
+}
+
+.legal-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 24px 0 12px;
+}
+
+.legal-content p {
+  margin: 0 0 16px;
+}
+
+.legal-content ul {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+
+.legal-content li {
+  margin-bottom: 8px;
+}
+
+.legal-content a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-content a:hover {
+  text-decoration: none;
+}
+
+/* =============================================
    Footer
    ============================================= */
 .footer {
@@ -908,6 +974,11 @@ h2 {
   margin: 0;
   color: var(--text-muted);
   font-size: 14px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
 }
 
 .footer-links a {
