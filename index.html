@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="dark light">
 
   <title>Friseursalon Team Hava | Hava Batagan – Friseur in Tuttlingen</title>
   <meta name="description" content="Friseursalon Team Hava von Hava Batagan in Tuttlingen (Kaufland). Damen- & Herrenfriseur für Haarschnitte, Balayage & Styling. Ohne Termin!">
@@ -12,8 +12,10 @@
   <meta name="author" content="Hava Batagan">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://friseursalon-team-hava.de/" />
+  <link rel="alternate" hreflang="de" href="https://friseursalon-team-hava.de/" />
 
   <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preload" as="image" href="assets/hero.jpg">
   <link rel="apple-touch-icon" href="assets/logo.png">
 
   <meta property="og:title" content="Friseursalon Team Hava | Hava Batagan – Friseur Tuttlingen">
@@ -32,6 +34,9 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
 
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Prevent flash of wrong theme -->
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 
   <!-- Schema.org LocalBusiness structured data for SEO -->
   <script type="application/ld+json">
@@ -100,6 +105,10 @@
         <a href="#galerie">Galerie</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Farbmodus wechseln">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">
         <span></span>
         <span></span>
@@ -324,6 +333,19 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Theme Toggle (Light/Dark Mode)
+      const themeToggle = document.getElementById('themeToggle');
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+      }
+      themeToggle.addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+
       // Dynamic year
       document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -351,17 +373,19 @@
       document.querySelectorAll('.revealable').forEach(el => io.observe(el));
 
       // Leaflet Map
-      const lat = 47.97371301499722;
-      const lng = 8.82710052986536;
-      const map = L.map('map').setView([lat, lng], 17);
+      if (typeof L !== 'undefined') {
+        const lat = 47.97371301499722;
+        const lng = 8.82710052986536;
+        const map = L.map('map').setView([lat, lng], 17);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap'
-      }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
 
-      L.marker([lat, lng]).addTo(map)
-        .bindPopup('<strong>Friseursalon Team Hava</strong><br>Stockacherstr. 146 (Kaufland)')
-        .openPopup();
+        L.marker([lat, lng]).addTo(map)
+          .bindPopup('<strong>Friseursalon Team Hava</strong><br>Stockacherstr. 146 (Kaufland)')
+          .openPopup();
+      }
 
       // Mobile Menu Toggle
       const menuToggle = document.getElementById('menuToggle');
@@ -430,17 +454,41 @@
         lightboxNext.disabled = currentIndex === allImages.length - 1;
       }
 
+      // Focus trap elements
+      const focusableSelectors = '#lightboxClose, #lightboxPrev, #lightboxNext';
+      let previousFocus = null;
+
+      function trapFocus(e) {
+        const focusable = lightbox.querySelectorAll(focusableSelectors);
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.key === 'Tab') {
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+
       function openLightbox(index) {
         currentIndex = index;
         updateLightbox();
+        previousFocus = document.activeElement;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
+        lightboxClose.focus();
+        document.addEventListener('keydown', trapFocus);
       }
 
       function closeLightbox() {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
         lightboxImg.src = '';
+        document.removeEventListener('keydown', trapFocus);
+        if (previousFocus) previousFocus.focus();
       }
 
       function nextImage() {

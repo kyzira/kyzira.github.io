@@ -22,6 +22,23 @@
   --border-gold-hover: 1px solid rgba(212, 175, 55, 0.5);
 }
 
+/* Light Theme */
+[data-theme="light"] {
+  --bg0: #ffffff;
+  --bg1: #f5f5f0;
+  --bg2: #edeae3;
+  --gold: #9a7b24;
+  --gold-light: #b8942e;
+  --gold-dark: #7d6319;
+  --text: #1a1a1a;
+  --text-muted: #555555;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --border-gold: 1px solid rgba(154, 123, 36, 0.2);
+  --border-gold-hover: 1px solid rgba(154, 123, 36, 0.45);
+}
+
 /* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -108,6 +125,7 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   height: 60px;
+  gap: 12px;
 }
 
 .menu {
@@ -1006,6 +1024,147 @@ h2 {
 }
 
 /* =============================================
+   Theme Toggle Button
+   ============================================= */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text);
+  transition: all var(--transition);
+  padding: 0;
+  margin-right: 8px;
+}
+
+.theme-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* In dark mode (default): show sun icon, hide moon */
+.theme-toggle .icon-sun {
+  display: block;
+}
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+/* In light mode: show moon icon, hide sun */
+[data-theme="light"] .theme-toggle .icon-sun {
+  display: none;
+}
+[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* =============================================
+   Light Theme Overrides
+   ============================================= */
+[data-theme="light"] .topbar {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme="light"] .menu a {
+  color: var(--text);
+}
+
+[data-theme="light"] .menu-toggle span {
+  background: var(--text);
+}
+
+[data-theme="light"] .mobile-menu-overlay.active {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] .mobile-menu {
+  background: var(--bg1);
+  border-left: var(--border-gold);
+}
+
+[data-theme="light"] .mobile-menu a {
+  color: var(--text);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .hero .shade {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+}
+
+[data-theme="light"] .hero h1 {
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .hero p {
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .hero-hours {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .btn {
+  color: #fff;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  box-shadow: 0 4px 20px rgba(154, 123, 36, 0.25);
+}
+
+[data-theme="light"] .btn:hover {
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(154, 123, 36, 0.35);
+}
+
+[data-theme="light"] .contact-highlight {
+  background: rgba(154, 123, 36, 0.08);
+  color: var(--gold);
+}
+
+[data-theme="light"] #map {
+  filter: none;
+}
+
+[data-theme="light"] .leaflet-marker-icon,
+[data-theme="light"] .leaflet-marker-shadow {
+  filter: none;
+}
+
+[data-theme="light"] .footer {
+  background: var(--bg1);
+}
+
+[data-theme="light"] .impressum-section {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .label-before {
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+}
+
+[data-theme="light"] .icon {
+  filter: brightness(0) saturate(100%) sepia(60%) saturate(600%) hue-rotate(15deg) brightness(60%);
+}
+
+/* =============================================
    Animations
    ============================================= */
 .revealable {
@@ -1062,6 +1221,11 @@ h2 {
 
   .topbar .container {
     justify-content: flex-end;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
   }
 
   /* Hero adjustments */
