@@ -888,6 +888,105 @@ h2 {
 }
 
 /* =============================================
+   Job Posting / Karriere Section
+   ============================================= */
+.job-posting {
+  max-width: 800px;
+  background: var(--bg2);
+  border: var(--border-gold);
+  border-radius: 16px;
+  padding: 48px;
+  position: relative;
+}
+
+.job-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.job-posting h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 8px 0;
+}
+
+.job-subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin: 0 0 32px 0;
+}
+
+.job-section {
+  margin-bottom: 28px;
+}
+
+.job-section h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0 0 12px 0;
+}
+
+.job-section p {
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.job-section ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-muted);
+}
+
+.job-section li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.job-apply {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: var(--border-gold);
+}
+
+.job-apply p {
+  color: var(--text-muted);
+  margin: 0 0 20px 0;
+}
+
+.job-apply-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-job {
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+.btn-job svg {
+  width: 16px;
+  height: 16px;
+}
+
+[data-theme="light"] .job-badge {
+  color: #fff;
+}
+
+/* =============================================
    Impressum Section
    ============================================= */
 .impressum-section {
@@ -1300,6 +1399,19 @@ h2 {
   /* Map */
   #map {
     height: 300px;
+  }
+
+  /* Job Posting */
+  .job-posting {
+    padding: 28px 20px;
+  }
+
+  .job-apply-links {
+    flex-direction: column;
+  }
+
+  .btn-job {
+    justify-content: center;
   }
 
   /* Footer */
