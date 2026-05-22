@@ -380,6 +380,29 @@ a:focus-visible {
   height: 18px;
 }
 
+/* Hero CTA Group */
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Outline variant for secondary hero CTA */
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff;
+  box-shadow: none;
+}
+
 /* Hero Hours Box */
 .hero-hours {
   position: absolute;
@@ -1263,6 +1286,131 @@ h2 {
   filter: brightness(0) saturate(100%) sepia(60%) saturate(600%) hue-rotate(15deg) brightness(60%);
 }
 
+[data-theme="light"] .btn-outline {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background: rgba(154, 123, 36, 0.08);
+  border-color: var(--gold-dark);
+  color: var(--gold-dark);
+}
+
+/* =============================================
+   Nav Booking CTA
+   ============================================= */
+.menu-booking {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000 !important;
+  border-radius: 20px;
+  padding: 6px 18px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.8px;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.menu-booking::after {
+  display: none !important;
+}
+
+.menu-booking:hover {
+  color: #000 !important;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+}
+
+[data-theme="light"] .menu-booking {
+  color: #fff !important;
+}
+
+[data-theme="light"] .menu-booking:hover {
+  color: #fff !important;
+}
+
+.mobile-menu-booking {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000 !important;
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 14px 0 !important;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: none !important;
+}
+
+.mobile-menu-booking:hover {
+  color: #000 !important;
+  padding-left: 0 !important;
+}
+
+[data-theme="light"] .mobile-menu-booking {
+  color: #fff !important;
+}
+
+/* =============================================
+   Contact Booking Button
+   ============================================= */
+.btn-contact-booking {
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* =============================================
+   Floating Booking Button
+   ============================================= */
+.floating-booking {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition);
+  animation: floatingPulse 3s ease-in-out infinite;
+}
+
+.floating-booking:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 32px rgba(212, 175, 55, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #000;
+}
+
+@keyframes floatingPulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 6px 32px rgba(212, 175, 55, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3); }
+}
+
+[data-theme="light"] .floating-booking {
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(154, 123, 36, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .floating-booking:hover {
+  color: #fff;
+  box-shadow: 0 10px 32px rgba(154, 123, 36, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* =============================================
    Animations
    ============================================= */
@@ -1354,6 +1502,31 @@ h2 {
   .btn {
     padding: 14px 28px;
     font-size: 14px;
+  }
+
+  .hero-cta {
+    gap: 12px;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floating-booking {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .floating-booking span {
+    display: none;
+  }
+
+  .floating-booking {
+    padding: 14px;
+    border-radius: 50%;
   }
 
   /* Sections */
