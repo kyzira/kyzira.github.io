@@ -380,6 +380,29 @@ a:focus-visible {
   height: 18px;
 }
 
+/* Hero CTA Group */
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Outline variant for secondary hero CTA */
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff;
+  box-shadow: none;
+}
+
 /* Hero Hours Box */
 .hero-hours {
   position: absolute;
@@ -888,6 +911,105 @@ h2 {
 }
 
 /* =============================================
+   Job Posting / Karriere Section
+   ============================================= */
+.job-posting {
+  max-width: 800px;
+  background: var(--bg2);
+  border: var(--border-gold);
+  border-radius: 16px;
+  padding: 48px;
+  position: relative;
+}
+
+.job-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.job-posting h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 8px 0;
+}
+
+.job-subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin: 0 0 32px 0;
+}
+
+.job-section {
+  margin-bottom: 28px;
+}
+
+.job-section h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0 0 12px 0;
+}
+
+.job-section p {
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.job-section ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-muted);
+}
+
+.job-section li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.job-apply {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: var(--border-gold);
+}
+
+.job-apply p {
+  color: var(--text-muted);
+  margin: 0 0 20px 0;
+}
+
+.job-apply-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-job {
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+.btn-job svg {
+  width: 16px;
+  height: 16px;
+}
+
+[data-theme="light"] .job-badge {
+  color: #fff;
+}
+
+/* =============================================
    Impressum Section
    ============================================= */
 .impressum-section {
@@ -1164,6 +1286,131 @@ h2 {
   filter: brightness(0) saturate(100%) sepia(60%) saturate(600%) hue-rotate(15deg) brightness(60%);
 }
 
+[data-theme="light"] .btn-outline {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background: rgba(154, 123, 36, 0.08);
+  border-color: var(--gold-dark);
+  color: var(--gold-dark);
+}
+
+/* =============================================
+   Nav Booking CTA
+   ============================================= */
+.menu-booking {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000 !important;
+  border-radius: 20px;
+  padding: 6px 18px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.8px;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.menu-booking::after {
+  display: none !important;
+}
+
+.menu-booking:hover {
+  color: #000 !important;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+}
+
+[data-theme="light"] .menu-booking {
+  color: #fff !important;
+}
+
+[data-theme="light"] .menu-booking:hover {
+  color: #fff !important;
+}
+
+.mobile-menu-booking {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000 !important;
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 14px 0 !important;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: none !important;
+}
+
+.mobile-menu-booking:hover {
+  color: #000 !important;
+  padding-left: 0 !important;
+}
+
+[data-theme="light"] .mobile-menu-booking {
+  color: #fff !important;
+}
+
+/* =============================================
+   Contact Booking Button
+   ============================================= */
+.btn-contact-booking {
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* =============================================
+   Floating Booking Button
+   ============================================= */
+.floating-booking {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition);
+  animation: floatingPulse 3s ease-in-out infinite;
+}
+
+.floating-booking:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 32px rgba(212, 175, 55, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #000;
+}
+
+@keyframes floatingPulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 6px 32px rgba(212, 175, 55, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3); }
+}
+
+[data-theme="light"] .floating-booking {
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(154, 123, 36, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .floating-booking:hover {
+  color: #fff;
+  box-shadow: 0 10px 32px rgba(154, 123, 36, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* =============================================
    Animations
    ============================================= */
@@ -1257,6 +1504,31 @@ h2 {
     font-size: 14px;
   }
 
+  .hero-cta {
+    gap: 12px;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floating-booking {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .floating-booking span {
+    display: none;
+  }
+
+  .floating-booking {
+    padding: 14px;
+    border-radius: 50%;
+  }
+
   /* Sections */
   .section {
     padding: 60px 16px;
@@ -1300,6 +1572,19 @@ h2 {
   /* Map */
   #map {
     height: 300px;
+  }
+
+  /* Job Posting */
+  .job-posting {
+    padding: 28px 20px;
+  }
+
+  .job-apply-links {
+    flex-direction: column;
+  }
+
+  .btn-job {
+    justify-content: center;
   }
 
   /* Footer */
