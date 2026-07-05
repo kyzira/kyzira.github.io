@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Offline – Friseursalon Team Hava</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
+  <style>
+    :root { --gold: #d4af37; --bg: #000; --text: #f5f5f5; --muted: #a0a0a0; }
+    [data-theme="light"] { --gold: #9a7b24; --bg: #fff; --text: #1a1a1a; --muted: #555; }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      text-align: center; padding: 24px;
+    }
+    img { max-width: 120px; margin-bottom: 32px; }
+    h1 { font-size: 24px; margin-bottom: 12px; color: var(--gold); }
+    p { color: var(--muted); margin-bottom: 24px; max-width: 400px; line-height: 1.6; }
+    .info { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 12px; padding: 24px; max-width: 320px; }
+    .info strong { color: var(--gold); display: block; margin-bottom: 8px; }
+    .info a { color: var(--gold); text-decoration: none; }
+    .retry { margin-top: 24px; display: inline-block; padding: 12px 28px;
+      background: var(--gold); color: #000; border-radius: 50px; text-decoration: none;
+      font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+    [data-theme="light"] .retry { color: #fff; }
+  </style>
+</head>
+<body>
+  <img src="assets/logo.png" alt="Team Hava Logo">
+  <h1>Sie sind offline</h1>
+  <p>Kein Problem — hier sind unsere wichtigsten Infos:</p>
+  <div class="info">
+    <strong>Friseursalon Team Hava</strong>
+    Stockacherstr. 146 (Im Kaufland)<br>
+    78532 Tuttlingen<br><br>
+    Tel.: <a href="tel:+4974619110030">+49 7461 9110030</a><br><br>
+    <strong>Öffnungszeiten</strong>
+    Mo–Sa: 09:00 – 19:00
+  </div>
+  <a href="/" class="retry" onclick="location.reload();return false;">Erneut versuchen</a>
+</body>
+</html>

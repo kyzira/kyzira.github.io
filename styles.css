@@ -1010,6 +1010,140 @@ h2 {
 }
 
 /* =============================================
+   Video Showcase
+   ============================================= */
+.video-showcase {
+  display: flex;
+  justify-content: center;
+}
+
+.video-showcase video {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  border: var(--border-gold);
+  box-shadow: var(--shadow-lg);
+  background: var(--bg2);
+}
+
+/* =============================================
+   PWA Install Banner
+   ============================================= */
+.pwa-banner {
+  position: fixed;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: calc(100% - 32px);
+  max-width: 520px;
+  padding: 16px 20px;
+  background: var(--bg2);
+  border: var(--border-gold);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pwa-banner.visible {
+  bottom: 90px;
+}
+
+.pwa-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.pwa-banner-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.pwa-banner-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pwa-banner-text strong {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.pwa-banner-text span {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pwa-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pwa-banner-install {
+  padding: 8px 18px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+
+.pwa-banner-install:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+}
+
+[data-theme="light"] .pwa-banner-install {
+  color: #fff;
+}
+
+.pwa-banner-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all var(--transition);
+  padding: 0;
+}
+
+.pwa-banner-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+[data-theme="light"] .pwa-banner-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .pwa-banner {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* =============================================
    Impressum Section
    ============================================= */
 .impressum-section {
@@ -1129,6 +1263,11 @@ h2 {
 
 .footer-links a:hover {
   color: var(--gold);
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
 }
 
 .to-top {
@@ -1572,6 +1711,21 @@ h2 {
   /* Map */
   #map {
     height: 300px;
+  }
+
+  /* Video */
+  .video-showcase video {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  /* PWA Banner */
+  .pwa-banner.visible {
+    bottom: 80px;
+  }
+
+  .pwa-banner-text span {
+    display: none;
   }
 
   /* Job Posting */
