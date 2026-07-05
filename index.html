@@ -186,18 +186,6 @@
     </div>
   </section>
 
-  <section id="ergebnis" class="section revealable">
-    <div class="container">
-      <h2>Unser Ergebnis</h2>
-      <div class="divider"></div>
-      <div class="video-showcase">
-        <video autoplay muted loop playsinline preload="metadata">
-          <source src="assets/ergebnis.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
-
   <section id="salon" class="section revealable">
     <div class="container">
       <h2>Unser Salon</h2>
@@ -259,6 +247,12 @@
                 <div class="before-after-label label-after">Nachher</div>
               </div>
             </div>
+          </div>
+          <div class="before-after gallery-video-card">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/ergebnis.mp4" type="video/mp4">
+            </video>
+            <div class="before-after-label label-after">Ergebnis</div>
           </div>
         </div>
         <button class="scroll-indicator scroll-indicator-right" aria-label="Nach rechts scrollen">
@@ -409,22 +403,6 @@
   </div>
 
   <!-- PWA Install Banner -->
-  <div class="pwa-banner" id="pwaBanner">
-    <div class="pwa-banner-content">
-      <img src="assets/icons/icon-96x96.png" alt="" class="pwa-banner-icon">
-      <div class="pwa-banner-text">
-        <strong>App installieren</strong>
-        <span>Termine buchen direkt vom Homescreen</span>
-      </div>
-    </div>
-    <div class="pwa-banner-actions">
-      <button class="pwa-banner-install" id="pwaInstall">Installieren</button>
-      <button class="pwa-banner-close" id="pwaClose" aria-label="Schließen">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-  </div>
-
   <!-- Floating Booking Button -->
   <a href="https://www.planity.com/de-DE/c2-friseure-tuttlingen-78532" class="floating-booking" target="_blank" rel="noopener" aria-label="Online Termin buchen">
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -813,36 +791,6 @@
 
         // Initial update
         updateIndicators();
-      });
-
-      // =============================================
-      // PWA Install Prompt
-      // =============================================
-      let deferredPrompt = null;
-      const pwaBanner = document.getElementById('pwaBanner');
-      const pwaInstall = document.getElementById('pwaInstall');
-      const pwaClose = document.getElementById('pwaClose');
-      const pwaDismissed = localStorage.getItem('pwa-dismissed');
-
-      window.addEventListener('beforeinstallprompt', function(e) {
-        e.preventDefault();
-        deferredPrompt = e;
-        if (!pwaDismissed) {
-          setTimeout(function() { pwaBanner.classList.add('visible'); }, 3000);
-        }
-      });
-
-      pwaInstall.addEventListener('click', function() {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(function() { deferredPrompt = null; });
-        }
-        pwaBanner.classList.remove('visible');
-      });
-
-      pwaClose.addEventListener('click', function() {
-        pwaBanner.classList.remove('visible');
-        localStorage.setItem('pwa-dismissed', '1');
       });
 
       // Service Worker Registration
